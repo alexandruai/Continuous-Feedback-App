@@ -4,7 +4,7 @@ import db from './dbConfig.js';
 import Rol from './models/Rol.js';
 import Utilizator from './models/User.js';
 import Activitate from './models/Activitate.js';
-
+import Feedback from './models/Feedback.js';
 let app = express();
 let router = express.Router();
 
@@ -42,16 +42,64 @@ async function getRoles() {
       ]
     })
 }
+async function deleteRol(id) {
+  let deleteElem = await Rol.findByPk(id);
+  if (!deleteElem)
+    return;
+  try {
+    return await deleteElem.destroy();
+
+  }
+  catch (e) {
+    let message = "This entity is already in use so it cannot be deleted";
+    if (e.message.includes("FK_User_Rol")) {
+
+      console.log(message);
+      return message;
+
+    }
+    else throw (e);
+  }
+}
+// async function updateRol(id, rol) {
+//   let updateElem = await Rol.findByPk(id,{include:[{
+//     model: Utilizator,
+//     as: "Users"
+//   }]});
+//   console.log(updateElem);
+//   if (!updateElem) {
+//     return "nu am gasit elementul";
+
+//   }
+  
+//     return await updateElem.update(rol, {
+//       include: [{
+//         model: Utilizator,
+//         as: "Users"
+//       }
+//       ]
+//     });
+ 
+// }
 //Rute pentru roluri si user
 router.route('/createRol').post(async (req, res) => {
   return res.json(await createRol(req.body));
 
-})
+});
 router.route('/roluri').get(async (req, res) => {
   return res.json(await getRoles());
-})
+});
+router.route('/deleteRol/:id').delete(async (req, res) => {
+  return res.json(await deleteRol(req.params.id));
+});
+// router.route('/rol/:id').put(async (req, res) => {
+//   return res.json(await updateRol(req.params.id, req.body));
+// })
 
-//Activitate
+//Activitati si Feedback -> DE FACUT
+
+
+
 
 let port = process.env.PORT || 8000;
 app.listen(port);
