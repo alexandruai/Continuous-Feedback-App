@@ -16,7 +16,12 @@ const Utilizator=db.define("Utilizator",{
     Password:{
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+    RolId:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+         }
+
 
 })
 export default Utilizator;

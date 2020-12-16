@@ -61,6 +61,16 @@ async function deleteRol(id) {
     else throw (e);
   }
 }
+
+async function createUser(RolId,user){
+  return await Utilizator.create({
+    Email: user.Email,
+    Password:user.Password,
+    RolId:RolId
+
+  });
+
+}
 // async function updateRol(id, rol) {
 //   let updateElem = await Rol.findByPk(id,{include:[{
 //     model: Utilizator,
@@ -92,6 +102,9 @@ router.route('/roluri').get(async (req, res) => {
 router.route('/deleteRol/:id').delete(async (req, res) => {
   return res.json(await deleteRol(req.params.id));
 });
+router.route('/createUser/:id').post(async(req,res)=>{
+  return res.json(await createUser(req.params.id,req.body));
+})
 // router.route('/rol/:id').put(async (req, res) => {
 //   return res.json(await updateRol(req.params.id, req.body));
 // })
