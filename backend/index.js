@@ -25,23 +25,32 @@ Rol.hasMany(Utilizator, { as: "Users", foreignKey: "RolId" });
 Utilizator.belongsTo(Rol, { foreignKey: "RolId" });
 //metode CRUD Rol si User
 async function createRol(rol) {
-  return await Rol.create(rol, {
-    include: [
-      { model: Utilizator, as: "Users" }
-    ]
-  });
-
+  try {
+    return await Rol.create(rol, {
+      include: [
+        { model: Utilizator, as: "Users" }
+      ]
+    });
+  }
+  catch (e) {
+    return e.message;
+  }
 }
 async function getRoles() {
-  return await Rol.findAll(
-    {
-      include: [
-        {
-          model: Utilizator,
-          as: "Users"
-        }
-      ]
-    })
+  try {
+    return await Rol.findAll(
+      {
+        include: [
+          {
+            model: Utilizator,
+            as: "Users"
+          }
+        ]
+      });
+  }
+  catch (e) {
+    return e.message;
+  }
 }
 async function updateRol(id, rol) {
   let element = await Rol.findByPk(id);
@@ -54,8 +63,6 @@ async function updateRol(id, rol) {
   catch (e) {
     return e.message;
   }
-
-
 }
 async function deleteRol(id) {
   let deleteElem = await Rol.findByPk(id);
@@ -63,7 +70,6 @@ async function deleteRol(id) {
     return;
   try {
     return await deleteElem.destroy();
-
   }
   catch (e) {
     let message = "Rolul nu poate fi sters pentru ca are utilizatori asociati!";
@@ -74,26 +80,38 @@ async function deleteRol(id) {
   }
 }
 async function createUser(RolId, user) {
-  return await Utilizator.create({
-    Email: user.Email,
-    Password: user.Password,
-    RolId: RolId
-
-  });
-
+  try {
+    return await Utilizator.create({
+      Email: user.Email,
+      Password: user.Password,
+      RolId: RolId
+    });
+  }
+  catch (e) {
+    return e.message;
+  }
 }
-async function getUsers(){
-  return await Utilizator.findAll();
+async function getUsers() {
+  try {
+    return await Utilizator.findAll();
+  }
+  catch (e) {
+    return e.message;
+  }
 }
-async function getUserById(id){
-  return await Utilizator.findByPk(id);
+async function getUserById(id) {
+  try {
+    return await Utilizator.findByPk(id);
+  }
+  catch (e) {
+    return e.message;
+  }
 }
 async function updateUser(id, user) {
   let updateElem = await Utilizator.findByPk(id);
   console.log(updateElem);
   if (!updateElem) {
-    return "nu am gasit elementul";
-
+    return "Elementul nu exista!";
   }
 
   return await updateElem.update(user);
@@ -105,7 +123,6 @@ async function deleteUser(id) {
     return;
   try {
     return await deleteElem.destroy();
-
   }
   catch (e) {
     let message = "This entity is already in use so it cannot be deleted";
@@ -124,24 +141,38 @@ async function deleteUser(id) {
 }
 //Rute pentru roluri si user
 router.route('/createRol').post(async (req, res) => {
-  return res.status(201).json(await createRol(req.body));
+  if (JSON.stringify(req.body) == "{}" || req.body === undefined || req.body === null) {
+    res.status(400).json({ message: "Request body is missing!" });
+  } else {
+    return res.status(201).json(await createRol(req.body));
+  }
 });
 router.route('/roluri').get(async (req, res) => {
   return res.status(200).json(await getRoles());
 });
 router.route('/rol/:id').put(async (req, res) => {
-  return res.json(await updateRol(req.params.id, req.body));
+  if (!(JSON.stringify(req.body) == "{}" || req.body === undefined || req.body === null)) {
+    return res.json(await updateRol(req.params.id, req.body));
+  }
+  else {
+    return res.status(400).json({ message: "Request body is missing!" });
+  }
 });
 router.route('/deleteRol/:id').delete(async (req, res) => {
   return res.json(await deleteRol(req.params.id));
 });
 router.route('/createUser/:id').post(async (req, res) => {
-  return res.status(201).json(await createUser(req.params.id, req.body));
+  if (JSON.stringify(req.body) == "{}" || req.body === undefined || req.body === null) {
+    res.status(400).json({ message: "Request body is missing!" });
+  }
+  else {
+    return res.status(201).json(await createUser(req.params.id, req.body));
+  }
 });
-router.route('/user/:id').get(async(req,res)=>{
+router.route('/user/:id').get(async (req, res) => {
   return res.json(await getUserById(req.params.id));
 });
-router.route('/users').get(async(req,res)=>{
+router.route('/users').get(async (req, res) => {
   return res.json(await getUsers());
 });
 router.route('/updateUser/:id').put(async (req, res) => {
