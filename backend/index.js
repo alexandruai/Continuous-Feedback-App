@@ -82,6 +82,12 @@ async function createUser(RolId, user) {
   });
 
 }
+async function getUsers(){
+  return await Utilizator.findAll();
+}
+async function getUserById(id){
+  return await Utilizator.findByPk(id);
+}
 async function updateUser(id, user) {
   let updateElem = await Utilizator.findByPk(id);
   console.log(updateElem);
@@ -131,6 +137,12 @@ router.route('/deleteRol/:id').delete(async (req, res) => {
 });
 router.route('/createUser/:id').post(async (req, res) => {
   return res.status(201).json(await createUser(req.params.id, req.body));
+});
+router.route('/user/:id').get(async(req,res)=>{
+  return res.json(await getUserById(req.params.id));
+});
+router.route('/users').get(async(req,res)=>{
+  return res.json(await getUsers());
 });
 router.route('/updateUser/:id').put(async (req, res) => {
   return res.json(await updateUser(req.params.id, req.body));
