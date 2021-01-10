@@ -1,0 +1,12 @@
+#containerFeedback{
+    display:grid;
+    grid-template-areas: 
+    "c1 c1" 
+    "c3 c3" ;
+width: 50vh;
+}
+img{
+    width: 200px;
+    height: 200px;
+    align-self: center;
+}
