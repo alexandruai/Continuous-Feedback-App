@@ -1,0 +1,12 @@
+#containerFeedback{
+    display:grid;
+    grid-template-areas: 
+    "c1 c1" 
+    "c2 c2" ;
+    width: 500px;
+   
+}
+img{
+    width: 200px;
+    height: 200px;
+  }
