@@ -5,7 +5,7 @@ const db = new Sequelize({
     database: 'ContinuousFeedback',
     username: 'SA',
     host: 'localhost',
-    port: '55892',
+    port: '1433',
     password: 'Vampir9@',  
     validateBulkLoadParameters: true,
     define: {
