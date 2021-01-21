@@ -3,10 +3,10 @@ import Sequelize from 'sequelize';
 const db = new Sequelize({
     dialect: 'mssql',
     database: 'ContinuousFeedback',
-    username: 'sa',
+    username: 'SA',
     host: 'localhost',
     port: '55892',
-    password: '1234',  
+    password: 'Vampir9@',  
     validateBulkLoadParameters: true,
     define: {
     timestamps: false,
