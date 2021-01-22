@@ -16,5 +16,23 @@ async function createActivitate(activitate) {
 
 }
 
-export {createActivitate};
+async function getActivitate() {
+    try {
+        return await Activitate.findAll();
+    }
+    catch (e) {
+        return e.message;
+    }
+}
+
+async function getActivitateById(id) {
+    try {
+        return await Activitate.findByPk(id);
+    }
+    catch (e) {
+        return e.message;
+    }
+}
+
+export {createActivitate, getActivitate, getActivitateById};
 
