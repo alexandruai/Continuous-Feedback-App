@@ -1,9 +1,12 @@
+-- Script-ul SQL aferent crearii bazei de date si a tabelelor
+-- Crearea bazei de date ContinuousFeedback
 IF (DB_ID('ContinuousFeedback') IS NULL)
  CREATE DATABASE ContinuousFeedback
  GO
  USE ContinuousFeedback
  GO
  IF OBJECT_ID('Rol') IS NULL
+--  Crearea tabelei Rol
   CREATE TABLE Rol
   (
   RolId INT NOT NULL IDENTITY(1,1),
@@ -12,6 +15,7 @@ IF (DB_ID('ContinuousFeedback') IS NULL)
   )
   GO
   IF OBJECT_ID('Utilizator') IS NULL
+--   Crearea tabelei utilizator
    CREATE TABLE Utilizator
    (
    UserId int NOT NULL IDENTITY(1,1),
@@ -24,6 +28,7 @@ IF (DB_ID('ContinuousFeedback') IS NULL)
    ALTER TABLE Utilizator ADD CONSTRAINT FK_User_Rol FOREIGN KEY (RolId) REFERENCES Rol(RolId)
   GO
   IF OBJECT_ID('Feedback') IS NULL 
+--   Crearea tabelei Feedback
    CREATE TABLE Feedback
 	 (
 	 FeedbackId int NOT NULL IDENTITY(1,1),
@@ -37,6 +42,7 @@ IF (DB_ID('ContinuousFeedback') IS NULL)
 	  ALTER TABLE Feedback ADD CONSTRAINT FK_User_Feedback FOREIGN KEY(UserId) REFERENCES Utilizator(UserId)
    GO
    IF OBJECT_ID('Activitate') IS NULL 
+--    Crearea tabelei Activitate
     CREATE TABLE Activitate
 	 (
       ActivitateId int NOT NULL IDENTITY(1,1),

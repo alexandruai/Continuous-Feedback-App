@@ -69,6 +69,9 @@ async function deleteUser(id) {
         } else if (e.message.includes("FK_User_Activitate")) {
             return "Utilizatorul nu poate fi sters, fiindca are activitati!"
         }
+        else if (e.message.includes("FK_User_Feedback")) {
+            return "Utilizatorul nu poate fi sters, fiindca a dat feedback!"
+        }
 
 
         else throw (e);

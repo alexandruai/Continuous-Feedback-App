@@ -20,6 +20,7 @@ app.use('/api',user);
 app.use('/api',feedback);
 app.use('/api',activity);
 
+// Autentificare la baza de date
 db.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
@@ -36,6 +37,7 @@ Utilizator.belongsTo(Rol, { foreignKey: "RolId" });
 Utilizator.hasMany(Activitate, { as: "Activitati", foreignKey: "UserId" });
 Activitate.belongsTo(Utilizator, { foreignKey: "UserId" });
 
+//Feedback
 Utilizator.hasMany(Feedback, { as: "Feedback", foreignKey: "UserId" });
 Feedback.belongsTo(Utilizator, { foreignKey: "UserId" });
 
