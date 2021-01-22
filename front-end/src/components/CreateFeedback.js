@@ -6,20 +6,41 @@ import CreateFeedbackComponent from '../css stylesheets/CreateFeedbackComponent.
 import frowny from '../resurse/frowny.jpg';
 class CreateFeedback extends React.Component {
 
+    constructor(props) {
+        super(props)
 
+        this.state = {
+            reactie: ""
+        }
+        this.onImageClick = this.onImageClick.bind(this);
+    }
 
+    onImageClick(e) {
+        if (e.target.name === "smiley") {
+            this.setState({ reactie: e.target.alt });
+        }
+        if (e.target.name === "confused") {
+            this.setState({ reactie: e.target.alt });
+        }
+        if (e.target.name === "surprised") {
+            this.setState({ reactie: e.target.alt });
+        }
+        if (e.target.name === "frowny") {
+            this.setState({ reactie: e.target.alt });
+        }
 
+        alert("Ati ales "+this.state.reactie) 
+    }
 
     render() {
-
         return (<div align="center">
-          <h1 align="center">Choose a feedback </h1>
-          <div id="containerFeedback">
-              <img src={confused} alt={"Confused face"} ></img>
-              <img src={smiley} alt={"Smiley face"}></img>
-              <img src={surprised} alt={"Surprised face"}></img>
-              <img src={frowny} alt={"Frowny face"}></img>
-          </div>
+            <h1 align="center">Choose a feedback </h1>
+            <div id="containerFeedback">
+                <img src={confused} alt={"Confused face"} name="confused" onClick={this.onImageClick}></img>
+                <img src={smiley} alt={"Smiley face"} name="smiley" onClick={this.onImageClick}></img>
+                <img src={surprised} alt={"Surprised face"} name="surprised" onClick={this.onImageClick}></img>
+                <img src={frowny} alt={"Frowny face"} name="frowny" onClick={this.onImageClick}></img>
+            </div>
         </div>);
 
 
