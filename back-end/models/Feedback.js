@@ -19,7 +19,7 @@ const Feedback = db.define("Feedback", {
     DataFeedback: {
         type: Sequelize.DATE, 
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW")
+       
     },
     UserId: {
         type: Sequelize.STRING,

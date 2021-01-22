@@ -6,6 +6,8 @@ import Utilizator from './models/User.js';
 import Activitate from './models/Activitate.js';
 import user from './routes/UserRoutes.js';
 import rol from './routes/RolRoutes.js';
+import feedback from './routes/FeedbackRoutes.js';
+import Feedback from './models/Feedback.js';
 let app = express();
 let router = express.Router();
 
@@ -14,7 +16,7 @@ app.use(bodyParser.json());
 //app.use('/api', router);
 app.use('/api',rol);
 app.use('/api',user);
-
+app.use('/api',feedback);
 db.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
@@ -30,6 +32,11 @@ Utilizator.belongsTo(Rol, { foreignKey: "RolId" });
 //Activitati
 Utilizator.hasMany(Activitate, { as: "Activitati", foreignKey: "UserId" });
 Activitate.belongsTo(Utilizator, { foreignKey: "UserId" });
+
+Utilizator.hasMany(Feedback, { as: "Feedback", foreignKey: "UserId" });
+Feedback.belongsTo(Utilizator, { foreignKey: "UserId" });
+
+
 
 // async function createActivitate(UserId, activitate) {
 //   try{
@@ -52,6 +59,6 @@ Activitate.belongsTo(Utilizator, { foreignKey: "UserId" });
 //   return res.status(201).json(await createActivitate(req.params.id, req.body));
 // });
 
-let port = process.env.PORT || 8000;
+let port = process.env.PORT || 8080;
 app.listen(port);
 console.log('API is runnning at ' + port);
