@@ -36,6 +36,7 @@ Utilizator.belongsTo(Rol, { foreignKey: "RolId" });
 Utilizator.hasMany(Activitate, { as: "Activitati", foreignKey: "UserId" });
 Activitate.belongsTo(Utilizator, { foreignKey: "UserId" });
 
+//Feedback
 Utilizator.hasMany(Feedback, { as: "Feedback", foreignKey: "UserId" });
 Feedback.belongsTo(Utilizator, { foreignKey: "UserId" });
 
