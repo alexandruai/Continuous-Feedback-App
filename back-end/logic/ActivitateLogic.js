@@ -1,8 +1,8 @@
 import Activitate from '../models/Activitate.js'
 
+// Creare Activitate
 async function createActivitate(activitate) {
-
-  try { // //eroare la data->trebuie rezolvata 
+  try { 
     return await Activitate.create({
       Denumire: activitate.Denumire,
       Descriere: activitate.Descriere,
@@ -15,7 +15,7 @@ async function createActivitate(activitate) {
   }
 
 }
-
+// Metoda de preluare activitati
 async function getActivitate() {
   try {
     return await Activitate.findAll();
@@ -24,7 +24,7 @@ async function getActivitate() {
     return e.message;
   }
 }
-
+// Metoda de preluare activitate dupa id
 async function getActivitateById(id) {
   try {
     return await Activitate.findByPk(id);
@@ -33,7 +33,7 @@ async function getActivitateById(id) {
     return e.message;
   }
 }
-
+// Metoda de update activitate dupa id
 async function updateActivitate(id, activitate) {
   let updateElem = await Activitate.findByPk(id);
   if (!updateElem)
@@ -44,7 +44,7 @@ async function updateActivitate(id, activitate) {
   }
   return await updateElem.update(activitate);
 }
-
+// Metoda de delete activitate dupa id
 async function deleteActivitate(id) {
   let deleteElem = await Activitate.findByPk(id);
   if (!deleteElem)

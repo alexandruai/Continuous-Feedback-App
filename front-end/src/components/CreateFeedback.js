@@ -14,7 +14,7 @@ class CreateFeedback extends React.Component {
         }
         this.onImageClick = this.onImageClick.bind(this);
     }
-
+    // tratare click pe imagine
     onImageClick(e) {
         if (e.target.name === "smiley") {
             this.setState({ reactie: e.target.alt });
