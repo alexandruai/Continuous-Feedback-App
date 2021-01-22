@@ -37,7 +37,6 @@ async function getFeedbackById(id) {
 
 async function updateFeedback(id, feedback) {
   let updateElem = await Feedback.findByPk(id);
-  let error = validateFeedback(feedback);
   if (!updateElem)
       return { hasErrors: true, message: "Nu exista un feedback cu acest id!" };
 
@@ -48,7 +47,7 @@ async function updateFeedback(id, feedback) {
 }
 
 async function deleteFeedback(id) {
-  let deleteElem = await Rol.findByPk(id);
+  let deleteElem = await Feedback.findByPk(id);
   if (!deleteElem)
     return;
   try {
