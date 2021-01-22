@@ -1,10 +1,10 @@
 import express from 'express';
-import { createFeedback, getFeedbackById, getFeedbacks, updateFeedback } from '../logic/FeedbackLogic.js';
+import { createFeedback, getFeedbackById, getFeedbacks, updateFeedback, deleteFeedback } from '../logic/FeedbackLogic.js';
 
 const router = express.Router();
 
-router.route('/createFeedback/:id').post(async (req, res) => {
-    return res.status(201).json(await createFeedback(req.params.id,req.body));
+router.route('/createFeedback').post(async (req, res) => {
+    return res.status(201).json(await createFeedback(req.body));
     });
     
 router.route('/feedbacks').get(async (req, res) => {

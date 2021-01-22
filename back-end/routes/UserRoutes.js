@@ -11,16 +11,16 @@ router.route('/createUser/:id').post(async (req, res) => {
     return res.status(201).json(await createUser(req.params.id, req.body));
   }
 });
-router.route('/users').get(async (req, res) => {
+router.route('/user').get(async (req, res) => {
   return res.json(await getUsers());
 });
 router.route('/user/:id').get(async (req, res) => {
   return res.json(await getUserById(req.params.id));
 });
-router.route('/updateUser/:id').put(async (req, res) => {
+router.route('/user/:id').put(async (req, res) => {
   return res.json(await updateUser(req.params.id, req.body));
 });
-router.route('/deleteUser/:id').delete(async (req, res) => {
+router.route('/user/:id').delete(async (req, res) => {
   return res.json(await deleteUser(req.params.id));
 });
 

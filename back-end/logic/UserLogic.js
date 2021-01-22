@@ -10,17 +10,17 @@ function validateUser(user) {
     }
 }
 async function createUser(RolId, user) {
-    let error = validateUser(user);
-    if (error.hasErrors) {
-        return error.message;
-    }
-    else {
+   // let error = validateUser(user);
+  //  if (error.hasErrors) {
+   //     return error.message;
+  //  }
+   // else {
         return await Utilizator.create({
             Email: user.Email,
             Password: user.Password,
             RolId: RolId
         });
-    }
+   // }
 }
 
 async function getUsers() {

@@ -8,13 +8,27 @@ import user from './routes/UserRoutes.js';
 import rol from './routes/RolRoutes.js';
 import feedback from './routes/FeedbackRoutes.js';
 import Feedback from './models/Feedback.js';
-import activity from './routes/ActivitateRoutes.js'
+import activity from './routes/ActivitateRoutes.js';
+import cors from 'cors';
 let app = express();
 let router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers',
+//   'Content-Type, Accept, Origin, X-Requested-With, Authorization');
+
+//   if (req.method === 'OPTIONS') {
+//       res.header('Access-Control-Allow-Methods',
+//       'GET, POST, PUT, DELETE');
+//   }
+//   next();
+// }) 
+
+app.use(cors());
 app.use('/api',rol);
 app.use('/api',user);
 app.use('/api',feedback);
@@ -40,8 +54,6 @@ Activitate.belongsTo(Utilizator, { foreignKey: "UserId" });
 //Feedback
 Utilizator.hasMany(Feedback, { as: "Feedback", foreignKey: "UserId" });
 Feedback.belongsTo(Utilizator, { foreignKey: "UserId" });
-
-
 
 // async function createActivitate(UserId, activitate) {
 //   try{

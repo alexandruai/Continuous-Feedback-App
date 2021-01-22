@@ -1,15 +1,16 @@
 import Feedback from '../models/Feedback.js';
 import Utilizator from '../models/User.js';
 
-async function createFeedback(UserId,feedback) {
+async function createFeedback(feedback) {
     try{
         //eroare la data->trebuie rezolvata
-        return await Feedback.create({
-            Mesaj: feedback.Mesaj,
-            Recenzie: feedback.Recenzie,
-            DataFeedback:Date.parse(feedback.DataFeedback),
-            UserId: UserId
-  });
+        return await Feedback.create(feedback)
+        //{
+           // Mesaj: feedback.Mesaj,
+            //Recenzie: feedback.Recenzie,
+            //DataFeedback:Date.parse(feedback.DataFeedback),
+            //UserId: UserId
+  //});
 
 }
 catch(e){

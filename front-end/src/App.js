@@ -2,9 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import React from 'react';
-import Login from './components/Login';
+import Register from './components/Register';
 import CreateFeedback from './components/CreateFeedback';
-
+import Login from './components/Login';
+import AddActivityCode from './components/AddActivityCode';
 class App extends React.Component {
 
   render(){
@@ -14,7 +15,8 @@ class App extends React.Component {
     <BrowserRouter>
       <Switch>
         <Route path ="/" exact strict component={Login}/>
-        <Route path ="/feedback" exact strict component={CreateFeedback}/>
+        <Route path="/AddActivityCode" exact strict component={AddActivityCode}/>
+        <Route path ="/CreateFeedback" exact strict component={CreateFeedback}/>
       </Switch>
     </BrowserRouter>
   );
