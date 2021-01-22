@@ -1,12 +1,13 @@
 import Sequelize from 'sequelize';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const db = new Sequelize({
     dialect: 'mssql',
     database: 'ContinuousFeedback',
-    username: 'sa',
+    username: process.env.DB_USER,
     host: 'localhost',
-    port: '55892',
-    password: '1234',  
+    port: process.env.DB_PORT,
+    password: process.env.DB_PASS,  
     validateBulkLoadParameters: true,
     define: {
     timestamps: false,
