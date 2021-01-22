@@ -17,7 +17,7 @@ const Feedback = db.define("Feedback", {
         allowNull: false
     },
     DataFeedback: {
-        type: Sequelize.DATE, 
+        type: Sequelize.STRING, 
         allowNull: false  
 
        

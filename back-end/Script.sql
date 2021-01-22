@@ -1,5 +1,19 @@
--- Script-ul SQL aferent crearii bazei de date si a tabelelor
--- Crearea bazei de date ContinuousFeedback
+
+ALTER TABLE Utilizator
+DROP CONSTRAINT FK_User_Rol;
+
+ALTER TABLE Feedback
+DROP CONSTRAINT FK_User_Feedback;
+
+ALTER TABLE Activitate
+DROP CONSTRAINT FK_User_Activitate;
+
+
+DROP TABLE Rol;
+DROP TABLE Utilizator;
+DROP TABLE Activitate;
+DROP TABLE Feedback;
+
 IF (DB_ID('ContinuousFeedback') IS NULL)
  CREATE DATABASE ContinuousFeedback
  GO
@@ -34,7 +48,7 @@ IF (DB_ID('ContinuousFeedback') IS NULL)
 	 FeedbackId int NOT NULL IDENTITY(1,1),
 	 Mesaj NVARCHAR(500),
 	 Recenzie NVARCHAR(100) NOT NULL,
-	 DataFeedback DATETIME NOT NULL,
+	 DataFeedback NVARCHAR(500) NOT NULL,
 	 UserId int NOT NULL
 	 CONSTRAINT PK_Feedback PRIMARY KEY(FeedbackId)
 	 )
@@ -48,7 +62,7 @@ IF (DB_ID('ContinuousFeedback') IS NULL)
       ActivitateId int NOT NULL IDENTITY(1,1),
 	  Denumire NVARCHAR(300) NOT NULL,
 	  Descriere NVARCHAR(500) NOT NULL,
-	  DataActivitate DATETIME NOT NULL,
+	  DataActivitate NVARCHAR(500) NOT NULL,
 	  Durata int NOT NULL,
 	  Cod NVARCHAR(100) NOT NULL,
 	  UserId int NOT NULL

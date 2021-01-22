@@ -17,9 +17,9 @@ const Activitate=db.define("Activitate",{
         allowNull: false
     },
     DataActivitate:{
-        type: Sequelize.DATE, 
+        type: Sequelize.STRING, 
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW") 
+      
     },
     Durata:{
         type: Sequelize.INTEGER,

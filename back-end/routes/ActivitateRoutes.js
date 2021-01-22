@@ -3,7 +3,7 @@ import { createActivitate, getActivitate, getActivitateById, updateActivitate, d
 
 const router = express.Router();
 
-router.route('/createActivitate/').post(async (req, res) => { 
+router.route('/createActivitate').post(async (req, res) => { 
     return res.status(201).json(await createActivitate(req.body));
 }); 
 
