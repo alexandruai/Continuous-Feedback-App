@@ -6,14 +6,16 @@ import Utilizator from './models/User.js';
 import Activitate from './models/Activitate.js';
 import user from './routes/UserRoutes.js';
 import rol from './routes/RolRoutes.js';
+import activity from './routes/ActivitateRoutes.js'
 let app = express();
 let router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-//app.use('/api', router);
+
 app.use('/api',rol);
 app.use('/api',user);
+app.use('/api',activity);
 
 db.authenticate()
   .then(() => {

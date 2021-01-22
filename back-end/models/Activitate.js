@@ -18,7 +18,8 @@ const Activitate=db.define("Activitate",{
     },
     DataActivitate:{
         type: Sequelize.DATE, 
-        allowNull: false
+        allowNull: false,
+        defaultValue: Sequelize.fn("NOW") 
     },
     Durata:{
         type: Sequelize.INTEGER,
@@ -34,7 +35,5 @@ const Activitate=db.define("Activitate",{
         allowNull:false
     }
     
-
-
 })
 export default Activitate;
