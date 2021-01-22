@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 
 app.use('/api',rol);
 app.use('/api',user);
+app.use('/api',feedback);
 app.use('/api',activity);
 
 db.authenticate()
