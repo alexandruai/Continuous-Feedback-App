@@ -6,12 +6,9 @@ import Utilizator from './models/User.js';
 import Activitate from './models/Activitate.js';
 import user from './routes/UserRoutes.js';
 import rol from './routes/RolRoutes.js';
-<<<<<<< HEAD
 import feedback from './routes/FeedbackRoutes.js';
 import Feedback from './models/Feedback.js';
-=======
 import activity from './routes/ActivitateRoutes.js'
->>>>>>> work/alexandruai
 let app = express();
 let router = express.Router();
 
@@ -20,12 +17,9 @@ app.use(bodyParser.json());
 
 app.use('/api',rol);
 app.use('/api',user);
-<<<<<<< HEAD
 app.use('/api',feedback);
-=======
 app.use('/api',activity);
 
->>>>>>> work/alexandruai
 db.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
