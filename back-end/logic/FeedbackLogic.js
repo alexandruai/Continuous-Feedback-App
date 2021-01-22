@@ -37,7 +37,7 @@ async function getFeedbackById(id) {
 
 async function updateFeedback(id, feedback) {
   let updateElem = await Feedback.findByPk(id);
-  let error = validateUser(user);
+  let error = validateFeedback(feedback);
   if (!updateElem)
       return { hasErrors: true, message: "Nu exista un feedback cu acest id!" };
 
