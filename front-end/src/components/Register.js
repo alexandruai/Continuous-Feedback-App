@@ -4,6 +4,7 @@ import { Button, ButtonGroup, Input, InputLabel } from '@material-ui/core';
 import '../css stylesheets/LoginComponent.css';
 import { post } from '../Calls';
 import {userRoute} from '../ApiRoutes';
+import axios from 'axios';
 class Register extends React.Component {
 
     constructor(props) {
@@ -26,14 +27,11 @@ class Register extends React.Component {
             const newUser = {
                 Email: this.state.User.email,
                 Password: this.state.User.password,
-                RolId:2
+                RolId:1
             }
            
-            let res = await post('http://localhost:8080/api/createUser/2',newUser).then();
-            if (res.hasErrors){
-                alert(res.message)
-                return;
-            }
+           axios.post('http://localhost:8080/api/createUser/1',newUser).then();
+         
             this.props.history.push("/");
 
 

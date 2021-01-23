@@ -15,6 +15,7 @@ class App extends React.Component {
     <BrowserRouter>
       <Switch>
         <Route path ="/" exact strict component={Login}/>
+        <Route path ="/Register" exact strict component={Register}/>
         <Route path="/AddActivityCode" exact strict component={AddActivityCode}/>
         <Route path ="/CreateFeedback" exact strict component={CreateFeedback}/>
       </Switch>

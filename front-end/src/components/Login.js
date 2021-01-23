@@ -17,7 +17,7 @@ class Login extends React.Component {
                 [e.target.name]: e.target.value
             })
         }
-      
+
     }
     render() {
         return (
@@ -40,14 +40,16 @@ class Login extends React.Component {
 
                 <ButtonGroup>
                     <Button variant="contained" color="primary" onClick={() => {
+                      
                         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then();
+                       
                         this.state.email !== "" && this.state.password !== "" ?
                             this.props.history.push("/AddActivityCode") : alert("You must log in first!")
                     }}>
                         Log in
                </Button>
 
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" onClick={() => { this.props.history.push("/Register") }}>
                         Register
                </Button>
                 </ButtonGroup>
