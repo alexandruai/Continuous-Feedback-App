@@ -7,6 +7,9 @@ import firebase from '../firebase-config.js';
 import { TextField, Button } from '@material-ui/core';
 import frowny from '../resurse/frowny.jpg';
 import axios from 'axios';
+
+
+
 // Clasa pentru crearea feedbackului
 class CreateFeedback extends React.Component {
 
@@ -20,9 +23,52 @@ class CreateFeedback extends React.Component {
         // Necesar pentru a fi this vizibil in callback
         this.onImageClick = this.onImageClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        //  window.onload = function () {
+        // var tenMinutes = 60 * 10,
+        //     display = document.querySelector('#time');
+        //     this.startTimer(tenMinutes, display);
+        //   };
+
     }
+
+
     handleChange(e) {
         this.setState({ mesaj: e.target.value })
+    }
+    //Functie care incepe numaratoarea inversa
+    startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+
+        // Ruleaza functia din nou in fiecare secunda si minut daca numarul nu este zero
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            // Afiseaza continutul text al unui element si incepe sa numere invers
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                while (minutes != 0) {
+                    minutes--;
+                }
+
+                while (seconds != 0) {
+                    seconds--;
+                }
+
+            }
+            if (timer === 0) {
+                alert("A expirat timpul!");
+            }
+        }, 1000);
+    }
+    componentDidMount() {
+        var fifteenMinutes = 60 * 15,
+            display = document.querySelector('#time');
+        this.startTimer(fifteenMinutes, display);
     }
     // tratare click pe imagine
     onImageClick(e) {
@@ -81,6 +127,7 @@ class CreateFeedback extends React.Component {
                     firebase.auth().signOut();
                     this.props.history.push("/")
                 }}>Sign out</Button>
+
 
         </div>);
 
