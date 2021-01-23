@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
 
-// Configurarea bazei de date, preluand username-ul, password-ul si portul din fisierul .nev
+// Configurarea bazei de date, preluand username-ul, password-ul si portul din fisierul .env
 dotenv.config();
 const db = new Sequelize({
     dialect: 'mssql',

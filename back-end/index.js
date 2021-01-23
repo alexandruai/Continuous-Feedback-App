@@ -30,7 +30,7 @@ db.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
-// Relatii DataBase
+// Relatii intre tabele/entitati DataBase
 
 //Relatie One to Many Rol si Utilizator
 Rol.hasMany(Utilizator, { as: "Users", foreignKey: "RolId" });
