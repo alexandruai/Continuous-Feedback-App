@@ -1,4 +1,6 @@
 import Utilizator from '../models/User.js';
+
+// Metoda validare user 
 function validateUser(user) {
     if (!user || Object.entries(user).length === 0)
         return { hasErrors: true, message: "You must provide user information!" };
@@ -9,6 +11,8 @@ function validateUser(user) {
         return { hasErrors: true, message: "You must provide an email!" };
     }
 }
+
+// Metoda creare user
 async function createUser(RolId, user) {
    // let error = validateUser(user);
   //  if (error.hasErrors) {
@@ -23,6 +27,7 @@ async function createUser(RolId, user) {
    // }
 }
 
+// Metoda de preluare useri
 async function getUsers() {
     try {
         return await Utilizator.findAll();
@@ -31,6 +36,8 @@ async function getUsers() {
         return e.message;
     }
 }
+
+// Metoda de preluare user dupa id
 async function getUserById(id) {
     try {
         return await Utilizator.findByPk(id);
@@ -39,6 +46,8 @@ async function getUserById(id) {
         return e.message;
     }
 }
+
+// Metoda de update user dupa id
 async function updateUser(id, user) {
     let updateElem = await Utilizator.findByPk(id);
     let error = validateUser(user);
@@ -51,6 +60,8 @@ async function updateUser(id, user) {
     return await updateElem.update(user);
 
 }
+
+// Metoda de delete user dupa id
 async function deleteUser(id) {
     let deleteElem = await Utilizator.findByPk(id);
     if (!deleteElem)

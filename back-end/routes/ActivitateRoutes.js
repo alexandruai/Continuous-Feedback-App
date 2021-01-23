@@ -10,11 +10,11 @@ router.route('/createActivitate').post(async (req, res) => {
 router.route('/activities').get(async (req, res) => {
      return res.json(await getActivitate());
 });
-// Ruta pentru crearea activitatate dupa id
+// Ruta pentru prelucrare activitatate dupa id
 router.route('/activities/:id').get(async (req, res) => {
      return res.json(await getActivitateById(req.params.id));
 });
-
+// Ruta pentru update activitatate dupa id
 router.route('/updateActivitate/:id').put(async (req, res) => {
     return res.json(await updateActivitate(req.params.id, req.body));
 });

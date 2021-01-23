@@ -1,6 +1,7 @@
 import Feedback from '../models/Feedback.js';
 import Utilizator from '../models/User.js';
 
+// Creare Feedback
 async function createFeedback(UserId, feedback) {
   try {
     return await Feedback.create(
@@ -17,6 +18,7 @@ async function createFeedback(UserId, feedback) {
   }
 }
 
+// Metoda de preluare feedback-uri
 async function getFeedbacks() {
   try {
     return await Feedback.findAll();
@@ -26,6 +28,7 @@ async function getFeedbacks() {
   }
 }
 
+// Metoda de preluare feedback dupa id
 async function getFeedbackById(id) {
   try {
     return await Feedback.findByPk(id);
@@ -35,6 +38,7 @@ async function getFeedbackById(id) {
   }
 }
 
+// Metoda de update feedback dupa id
 async function updateFeedback(id, feedback) {
   let updateElem = await Feedback.findByPk(id);
   if (!updateElem)
@@ -46,6 +50,7 @@ async function updateFeedback(id, feedback) {
   return await updateElem.update(feedback);
 }
 
+// Metoda de delete feedback dupa id
 async function deleteFeedback(id) {
   let deleteElem = await Feedback.findByPk(id);
   if (!deleteElem)

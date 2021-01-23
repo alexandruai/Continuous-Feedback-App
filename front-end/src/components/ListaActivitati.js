@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Paper, Table, TableBody, TableCell, TableRow, TableContainer, TableHead, IconButton } from '@material-ui/core'
 import '../css stylesheets/ListActivitati.css';
+// Clasa pentru listarea activitatilor
 class ListaActivitati extends React.Component {
 
     constructor(props) {
@@ -22,7 +23,7 @@ class ListaActivitati extends React.Component {
 
 
     render() {
-
+        // Definire componente vizuale
         return (<div>
             <h3>Lista activitatilor</h3>
             <TableContainer component={Paper}>
@@ -60,5 +61,5 @@ class ListaActivitati extends React.Component {
 
     }
 }
-
+// Pentru a putea face clasa vizibila si in alte fisiere, pentru a putea fi utilizata in acestea
 export default ListaActivitati;

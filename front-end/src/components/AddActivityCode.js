@@ -1,8 +1,8 @@
 import React from 'react';
 import{ TextField,  Button } from '@material-ui/core';
 import '../css stylesheets/AddActivityCode.css';
+// Clasa pentru introducerea codului activitatilor
 class AddActivityCode extends React.Component {
-
 
     constructor(props) {
         super(props)
@@ -17,6 +17,7 @@ class AddActivityCode extends React.Component {
     }
     render() {
 
+        // Definire componente vizuale
         return (
             <div>
                 <TextField
@@ -40,4 +41,5 @@ class AddActivityCode extends React.Component {
 
     }
 }
+// Pentru a putea face clasa vizibila si in alte fisiere, pentru a putea fi utilizata in acestea
 export default AddActivityCode;

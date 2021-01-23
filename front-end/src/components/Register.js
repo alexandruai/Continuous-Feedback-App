@@ -5,6 +5,7 @@ import '../css stylesheets/LoginComponent.css';
 import { post } from '../Calls';
 import {userRoute} from '../ApiRoutes';
 import axios from 'axios';
+// Clasa pentru inregistrarea unui nou utilizator
 class Register extends React.Component {
 
     constructor(props) {
@@ -40,6 +41,7 @@ class Register extends React.Component {
     }
 
     render() {
+        // Definire componente vizuale
         return (
 
             <form id="login">
@@ -71,4 +73,5 @@ class Register extends React.Component {
 
     }
 }
+// Pentru a putea face clasa vizibila si in alte fisiere, pentru a putea fi utilizata in acestea
 export default Register;

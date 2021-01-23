@@ -15,6 +15,7 @@ async function createActivitate(activitate) {
   }
 
 }
+
 // Metoda de preluare activitati
 async function getActivitate() {
   try {

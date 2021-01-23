@@ -7,6 +7,7 @@ import { TextField, Button } from '@material-ui/core';
 import { post } from '../Calls';
 import frowny from '../resurse/frowny.jpg';
 import axios from 'axios';
+// Clasa pentru crearea feedbackului
 class CreateFeedback extends React.Component {
 
     constructor(props) {
@@ -41,6 +42,7 @@ class CreateFeedback extends React.Component {
     }
 
     render() {
+        // Definire componente vizuale
         return (<div align="center">
             <h1 align="center">Choose a feedback </h1>
             <div id="containerFeedback">
@@ -74,5 +76,5 @@ class CreateFeedback extends React.Component {
 
     }
 }
-
+// Pentru a putea face clasa vizibila si in alte fisiere, pentru a putea fi utilizata in acestea
 export default CreateFeedback;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, ButtonGroup, Input, InputLabel } from '@material-ui/core';
 import '../css stylesheets/LoginComponent.css';
 import firebase from '../firebase-config.js';
+// Clasa pentru logarea userilor
 class Login extends React.Component {
 
     constructor(props) {
@@ -20,6 +21,7 @@ class Login extends React.Component {
 
     }
     render() {
+        // Definire componente vizuale
         return (
             <form id="login">
                 <h4>Welcome to the Continuous Feedback App</h4>
@@ -58,5 +60,5 @@ class Login extends React.Component {
         );
     }
 }
-
+// Pentru a putea face clasa vizibila si in alte fisiere, pentru a putea fi utilizata in acestea
 export default Login;

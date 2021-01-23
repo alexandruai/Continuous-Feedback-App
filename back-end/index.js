@@ -15,19 +15,6 @@ let router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Headers',
-//   'Content-Type, Accept, Origin, X-Requested-With, Authorization');
-
-//   if (req.method === 'OPTIONS') {
-//       res.header('Access-Control-Allow-Methods',
-//       'GET, POST, PUT, DELETE');
-//   }
-//   next();
-// }) 
-
 app.use(cors());
 app.use('/api',rol);
 app.use('/api',user);
@@ -42,6 +29,9 @@ db.authenticate()
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+// Relatii DataBase
+
 //Relatie One to Many Rol si Utilizator
 Rol.hasMany(Utilizator, { as: "Users", foreignKey: "RolId" });
 Utilizator.belongsTo(Rol, { foreignKey: "RolId" });
@@ -54,27 +44,6 @@ Activitate.belongsTo(Utilizator, { foreignKey: "UserId" });
 //Feedback
 Utilizator.hasMany(Feedback, { as: "Feedback", foreignKey: "UserId" });
 Feedback.belongsTo(Utilizator, { foreignKey: "UserId" });
-
-// async function createActivitate(UserId, activitate) {
-//   try{
-//     //eroare la data->trebuie rezolvata
-//     return await Activitate.create({
-//     Denumire: activitate.Denumire,
-//     Descriere: activitate.Descriere,
-//     DataActivitate:activitate.DataActivitate,
-//     Durata:activitate.Durata,
-//     Cod:activitate.Cod,
-//     UserId: UserId
-//   });
-// }
-// catch(e){
-//   return e.message;
-// }
-
-// }
-// router.route('/createActivitate/:id').post(async (req, res) => {
-//   return res.status(201).json(await createActivitate(req.params.id, req.body));
-// });
 
 let port = process.env.PORT || 8080;
 app.listen(port);

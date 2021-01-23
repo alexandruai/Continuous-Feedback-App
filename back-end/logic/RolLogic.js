@@ -1,5 +1,7 @@
 import Rol from '../models/Rol.js';
 import Utilizator from '../models/User.js';
+
+// Creare rol
 async function createRol(rol) {
     try {
       return await Rol.create(rol, {
@@ -13,6 +15,7 @@ async function createRol(rol) {
     }
   }
 
+  // Metoda de preluare roluri
   async function getRoles() {
     try {
       return await Rol.findAll(
@@ -30,6 +33,7 @@ async function createRol(rol) {
     }
   }
 
+  // Metoda de update rol dupa id
   async function updateRol(id, rol) {
     let element = await Rol.findByPk(id);
     if (!element) {
@@ -42,6 +46,8 @@ async function createRol(rol) {
       return e.message;
     }
   }
+
+  // Metoda de delete user dupa id
   async function deleteRol(id) {
     let deleteElem = await Rol.findByPk(id);
     if (!deleteElem)
