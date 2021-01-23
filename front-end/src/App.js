@@ -6,6 +6,7 @@ import Register from './components/Register';
 import CreateFeedback from './components/CreateFeedback';
 import Login from './components/Login';
 import AddActivityCode from './components/AddActivityCode';
+import ListaActivitati from './components/ListaActivitati';
 class App extends React.Component {
 
   render(){
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Route path ="/" exact strict component={Login}/>
         <Route path ="/Register" exact strict component={Register}/>
         <Route path="/AddActivityCode" exact strict component={AddActivityCode}/>
+        <Route path="/ListaActivitati" exact strict component={ListaActivitati}/>
         <Route path ="/CreateFeedback" exact strict component={CreateFeedback}/>
       </Switch>
     </BrowserRouter>

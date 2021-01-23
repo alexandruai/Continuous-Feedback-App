@@ -1,0 +1,11 @@
+div{
+    width:90%;
+    height: 80%;
+}
+.MuiTableRow-root.MuiTableRow-head{
+    background-color: #15B097;
+   
+}
+.MuiTableBody-root{
+    background-color:rgb(235, 235, 235) ;
+}
