@@ -44,7 +44,7 @@ class AddActivityCode extends React.Component {
                         console.log("Coduri:", codes);
                         // Verificare cod activitate - sa existe in BD si sa aiba 4 caractere
                         this.state.code.length === 4 && codes.includes(this.state.code) ?
-                            this.props.history.push("/CreateFeedback") : alert("Codul trebuie sa aiba 4 caractere")
+                            this.props.history.push("/CreateFeedback") : alert("Codul nu este valid!")
                     }}>Go to feedback form</Button>
 
             </div>)
