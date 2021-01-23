@@ -1,5 +1,6 @@
 import React from 'react';
-import{ TextField,  Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
+import axios from 'axios';
 import '../css stylesheets/AddActivityCode.css';
 // Clasa pentru introducerea codului activitatilor
 class AddActivityCode extends React.Component {
@@ -7,7 +8,8 @@ class AddActivityCode extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            code: "0000"
+            code: "0000",
+            rows: []
         }
         this.handleChange = this.handleChange.bind(this);
 
@@ -15,6 +17,13 @@ class AddActivityCode extends React.Component {
     handleChange = (ev) => {
         this.setState({ code: ev.target.value })
     }
+    componentDidMount() {
+        this.getData();
+    }
+    async getData() {
+        await axios.get("http://localhost:8080/api/activities").then(res => { this.setState({ rows: res.data }) });
+    }
+
     render() {
 
         // Definire componente vizuale
@@ -31,8 +40,11 @@ class AddActivityCode extends React.Component {
                     variant="contained"
                     color="primary"
                     onClick={() => {
-                        this.state.code.length===4?
-                        this.props.history.push("/CreateFeedback"):alert("Codul trebuie sa aiba 4 caractere")
+                        let codes = this.state.rows.map(e => e.Cod);
+                        console.log("Coduri:", codes);
+                        // Verificare cod activitate - sa existe in BD si sa aiba 4 caractere
+                        this.state.code.length === 4 && codes.includes(this.state.code) ?
+                            this.props.history.push("/CreateFeedback") : alert("Codul trebuie sa aiba 4 caractere")
                     }}
                 >Go to feedback form</Button>
 

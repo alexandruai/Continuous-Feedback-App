@@ -12,7 +12,7 @@ class ListaActivitati extends React.Component {
             rows: []
         };
     }
-
+    // preluare activitati din baza de date la initializarea componentei
     componentDidMount() {
         this.getData();
     }
@@ -23,7 +23,7 @@ class ListaActivitati extends React.Component {
 
 
     render() {
-        // Definire componente vizuale
+        // Definire componente vizuale - tabelul cu activitati
         return (<div>
             <h3>Lista activitatilor</h3>
             <TableContainer component={Paper}>
@@ -41,7 +41,7 @@ class ListaActivitati extends React.Component {
                     <TableBody>
                         {this.state.rows.map((row, index) => (
                             <TableRow key={row.ActivitateId}>
-                               
+
                                 <TableCell align="right">{row.Denumire}</TableCell>
                                 <TableCell align="right">{row.Descriere}</TableCell>
                                 <TableCell align="right">{row.DataActivitate}</TableCell>

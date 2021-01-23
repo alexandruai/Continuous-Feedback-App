@@ -2,6 +2,7 @@ import { ExpansionPanel } from "@material-ui/core";
 import firebase from "firebase/app";
 import "firebase/auth";
 
+// initializare credentiale pentru firebase
 const app = firebase.initializeApp({
     apiKey: "AIzaSyD3rr-k9hk5eyl0fXQ_IV-PuZGHjylOQwI",
     authDomain: "tw-project-75c12.firebaseapp.com",

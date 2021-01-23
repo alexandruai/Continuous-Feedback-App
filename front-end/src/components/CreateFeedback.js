@@ -4,7 +4,6 @@ import smiley from '../resurse/smiley.png';
 import surprised from '../resurse/surprised.png';
 import CreateFeedbackComponent from '../css stylesheets/CreateFeedbackComponent.css';
 import { TextField, Button } from '@material-ui/core';
-import { post } from '../Calls';
 import frowny from '../resurse/frowny.jpg';
 import axios from 'axios';
 // Clasa pentru crearea feedbackului
@@ -17,6 +16,7 @@ class CreateFeedback extends React.Component {
             reactie: "",
             mesaj: ""
         }
+        // Necesar pentru a fi this vizibil in callback
         this.onImageClick = this.onImageClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -68,6 +68,8 @@ class CreateFeedback extends React.Component {
                     
                 }
                 axios.post("http://localhost:8080/api/createFeedback/3",feedback).then(res=>{console.log(res)})
+                alert("Feedback inregistrat!")
+                this.props.history.push("/AddActivityCode")
             }}>
                 Save
                </Button>
