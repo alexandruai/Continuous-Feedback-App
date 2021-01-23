@@ -3,6 +3,7 @@ import confused from '../resurse/confused.png';
 import smiley from '../resurse/smiley.png';
 import surprised from '../resurse/surprised.png';
 import CreateFeedbackComponent from '../css stylesheets/CreateFeedbackComponent.css';
+import firebase from '../firebase-config.js';
 import { TextField, Button } from '@material-ui/core';
 import frowny from '../resurse/frowny.jpg';
 import axios from 'axios';
@@ -59,20 +60,28 @@ class CreateFeedback extends React.Component {
                 variant="outlined"
                 onChange={this.handleChange}
             />
-            <Button variant="contained" color="primary" onClick={async() => {
+            <Button variant="contained" color="primary" onClick={async () => {
                 let feedback = {
                     Mesaj: this.state.mesaj,
                     Recenzie: this.state.reactie,
                     DataFeedback: Date.now(),
                     UserId: 3
-                    
+
                 }
-                axios.post("http://localhost:8080/api/createFeedback/3",feedback).then(res=>{console.log(res)})
+                axios.post("http://localhost:8080/api/createFeedback/3", feedback).then(res => { console.log(res) })
                 alert("Feedback inregistrat!")
                 this.props.history.push("/AddActivityCode")
             }}>
                 Save
                </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                    firebase.auth().signOut();
+                    this.props.history.push("/")
+                }}>Sign out</Button>
+
         </div>);
 
 
